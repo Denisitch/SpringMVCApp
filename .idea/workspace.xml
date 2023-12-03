@@ -9,13 +9,14 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a8efb7d7-e435-4886-b677-b3305568963d" name="Changes" comment="init project">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/denisitch/config/MySpringMVCDispatcherServletInitializer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/denisitch/config/SpringConfig.java" afterDir="false" />
+    <list default="true" id="a8efb7d7-e435-4886-b677-b3305568963d" name="Changes" comment="config project without xml">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/denisitch/controllers/FirstController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/denisitch/controllers/SecondController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/first/hello.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/second/exit.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/applicationContextMVC.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/denisitch/HelloController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/hello_world.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/first/goodbye.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +32,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="LogFilters">
@@ -78,6 +84,7 @@
       <recent name="D:\dev\javaalishev\SpringMVCApp\src\main" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\dev\javaalishev\SpringMVCApp\src\main\webapp\WEB-INF\views\first" />
       <recent name="D:\dev\javaalishev\SpringMVCApp\src\main\webapp\WEB-INF\views" />
     </key>
   </component>
@@ -182,7 +189,7 @@
       <workItem from="1701538774403" duration="1749000" />
       <workItem from="1701592935903" duration="2277000" />
       <workItem from="1701595520709" duration="3316000" />
-      <workItem from="1701599795240" duration="781000" />
+      <workItem from="1701599795240" duration="5231000" />
     </task>
     <task id="LOCAL-00001" summary="init project">
       <created>1701597548160</created>
@@ -191,7 +198,14 @@
       <option name="project" value="LOCAL" />
       <updated>1701597548160</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="config project without xml">
+      <created>1701606020224</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1701606020224</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -210,7 +224,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="init project" />
-    <option name="LAST_COMMIT_MESSAGE" value="init project" />
+    <MESSAGE value="config project without xml" />
+    <option name="LAST_COMMIT_MESSAGE" value="config project without xml" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
