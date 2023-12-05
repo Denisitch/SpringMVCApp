@@ -2,6 +2,7 @@ package com.denisitch.dao;
 
 import com.denisitch.models.Person;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
@@ -19,14 +20,14 @@ public class PersonDAO {
     public List<Person> index() {
         return jdbcTemplate.query(
                 "SELECT * FROM Person",
-                new PersonMapper()
+                new BeanPropertyRowMapper<>(Person.class)
         );
     }
 
     public Person show(int id) {
         return jdbcTemplate.query(
                 "SELECT * FROM Person WHERE id=?",
-                        new PersonMapper(),
+                        new BeanPropertyRowMapper<>(Person.class),
                         id)
                 .stream().findAny().orElse(null);
     }
@@ -45,7 +46,7 @@ public class PersonDAO {
                 updatePerson.getName(),
                 updatePerson.getAge(),
                 updatePerson.getEmail(),
-                updatePerson.getId()
+                id
         );
     }
 
