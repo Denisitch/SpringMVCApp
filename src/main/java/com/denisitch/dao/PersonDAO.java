@@ -5,12 +5,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Component;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class PersonDAO {
@@ -34,6 +36,14 @@ public class PersonDAO {
                         new BeanPropertyRowMapper<>(Person.class),
                         id)
                 .stream().findAny().orElse(null);
+    }
+
+    public Optional<Person> show(String email) {
+        return jdbcTemplate.query(
+                        "SELECT * FROM Person WHERE email=?",
+                        new BeanPropertyRowMapper<>(Person.class),
+                        email)
+                .stream().findAny();
     }
 
     public void save(Person person) {
@@ -99,7 +109,7 @@ public class PersonDAO {
                 "INSERT INTO Person VALUES(?, ?, ?, ?)",
                 new BatchPreparedStatementSetter() {
                     @Override
-                    public void setValues(PreparedStatement ps, int i) throws SQLException {
+                    public void setValues(@NonNull PreparedStatement ps, int i) throws SQLException {
                         ps.setInt(1, people.get(i).getId());
                         ps.setString(2, people.get(i).getName());
                         ps.setInt(3, people.get(i).getAge());
