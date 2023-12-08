@@ -48,18 +48,20 @@ public class PersonDAO {
 
     public void save(Person person) {
         jdbcTemplate.update(
-                "INSERT INTO Person(name, age, email) VALUES(?, ?, ?)",
+                "INSERT INTO Person(name, age, email, address) VALUES(?, ?, ?, ?)",
                 person.getName(),
                 person.getAge(),
-                person.getEmail()
+                person.getEmail(),
+                person.getAddress()
         );
     }
 
     public void update(int id, Person updatePerson) {
-        jdbcTemplate.update("UPDATE Person SET name=?, age=?, email=? WHERE id=?",
+        jdbcTemplate.update("UPDATE Person SET name=?, age=?, email=?, address=? WHERE id=?",
                 updatePerson.getName(),
                 updatePerson.getAge(),
                 updatePerson.getEmail(),
+                updatePerson.getAddress(),
                 id
         );
     }
@@ -78,11 +80,12 @@ public class PersonDAO {
 
         for (Person person : people) {
             jdbcTemplate.update(
-                    "INSERT INTO Person VALUES(?, ?, ?, ?)",
+                    "INSERT INTO Person VALUES(?, ?, ?, ?, ?)",
                     person.getId(),
                     person.getName(),
                     person.getAge(),
-                    person.getEmail()
+                    person.getEmail(),
+                    person.getAddress()
             );
         }
 
@@ -95,7 +98,8 @@ public class PersonDAO {
         List<Person> people = new ArrayList<>();
 
         for (int i = 0; i < 1000; i++) {
-            people.add(new Person(i, "Bob" + i, 25, "test" + i + "@gmail.com"));
+            people.add(new Person(i, "Bob" + i, 25,
+                    "test" + i + "@gmail.com", "Russia, Moscow, 101010"));
         }
         return people;
     }
@@ -106,7 +110,7 @@ public class PersonDAO {
         long before = System.currentTimeMillis();
 
         jdbcTemplate.batchUpdate(
-                "INSERT INTO Person VALUES(?, ?, ?, ?)",
+                "INSERT INTO Person VALUES(?, ?, ?, ?, ?)",
                 new BatchPreparedStatementSetter() {
                     @Override
                     public void setValues(@NonNull PreparedStatement ps, int i) throws SQLException {
@@ -114,6 +118,7 @@ public class PersonDAO {
                         ps.setString(2, people.get(i).getName());
                         ps.setInt(3, people.get(i).getAge());
                         ps.setString(4, people.get(i).getEmail());
+                        ps.setString(5, people.get(i).getAddress());
                     }
 
                     @Override
