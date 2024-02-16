@@ -3,7 +3,6 @@ package com.denisitch.dao;
 import com.denisitch.models.Person;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -30,7 +29,7 @@ public class PersonDAO {
     public Optional<Person> show(String email) {
         Session session = sessionFactory.getCurrentSession();
         return session.createQuery(
-                        "select p from Person p where:value is null or p.email=: email",
+                        "select p from Person p where p.email=: email",
                         Person.class
                 )
                 .setParameter("email", email).stream().findAny();

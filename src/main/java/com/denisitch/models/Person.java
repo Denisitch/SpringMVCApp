@@ -21,7 +21,7 @@ public class Person {
     @NotEmpty(message = "Email should not be empty")
     @Email(message = "Email should be valid")
     private String email;
-
+    @Column(name = "address")
     @Pattern(regexp = "[A-Z]\\w+, [A-Z]\\w+, \\d{6}",
             message = "Your address should be in this format: Country, City, index(6 digits)")
     private String address;
@@ -34,7 +34,6 @@ public class Person {
     }
 
     public Person() {
-
     }
 
     public int getId() {
