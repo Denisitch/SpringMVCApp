@@ -6,6 +6,7 @@ target/
 ### IntelliJ IDEA ###
 .idea
 database.properties
+hibernate.properties
 *.iws
 *.iml
 *.ipr
