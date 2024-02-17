@@ -3,6 +3,8 @@ package com.denisitch.models;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "Person")
 public class Person {
@@ -21,16 +23,12 @@ public class Person {
     @NotEmpty(message = "Email should not be empty")
     @Email(message = "Email should be valid")
     private String email;
-    @Column(name = "address")
-    @Pattern(regexp = "[A-Z]\\w+, [A-Z]\\w+, \\d{6}",
-            message = "Your address should be in this format: Country, City, index(6 digits)")
-    private String address;
+    @OneToMany(mappedBy = "owner")
+    private List<Item> items;
 
-    public Person(String name, int age, String email, String address) {
+    public Person(String name, int age) {
         this.name = name;
         this.age = age;
-        this.email = email;
-        this.address = address;
     }
 
     public Person() {
@@ -68,11 +66,11 @@ public class Person {
         this.email = email;
     }
 
-    public String getAddress() {
-        return address;
+    public List<Item> getItems() {
+        return items;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setItems(List<Item> items) {
+        this.items = items;
     }
 }
